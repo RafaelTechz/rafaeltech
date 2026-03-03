@@ -1,28 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja Online</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Criativo | Serviços Digitais</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f9; margin: 0; padding: 20px; text-align: center; }
+        header { padding: 40px 0; background: #2c3e50; color: white; border-radius: 10px; margin-bottom: 30px; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        
+        /* Cartão de Serviço */
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+                width: 300px; padding: 20px; transition: transform 0.3s; cursor: pointer; }
+        .card:hover { transform: translateY(-10px); border: 2px solid #3498db; }
+        
+        .icon { font-size: 40px; margin-bottom: 10px; }
+        h3 { color: #2c3e50; }
+        p { color: #666; font-size: 0.9em; }
+        
+        .btn-contato { display: inline-block; margin-top: 40px; padding: 15px 30px; 
+                       background: #27ae60; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; }
+    </style>
 </head>
 <body>
 
     <header>
-        <h1>Minha Loja Incrível</h1>
-        <p>Os melhores produtos tecnológicos você encontra aqui.</p>
+        <h1>Os Meus Serviços Digitais</h1>
+        <p>Transformo ideias em realidade visual e funcional.</p>
     </header>
 
-    <main>
-        <div id="container-produtos" class="grid-produtos">
-            <p>Carregando produtos...</p>
+    <div class="container">
+        <div class="card" onclick="alert('Criação de Sites: Landing pages, Lojas Online e Portfólios.')">
+            <div class="icon">💻</div>
+            <h3>Criação de Sites</h3>
+            <p>Sites modernos, rápidos e adaptados a todos os dispositivos.</p>
         </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Minha Loja - Hospedado no GitHub Pages</p>
-    </footer>
+        <div class="card" onclick="alert('Edição de Fotos: Retoque profissional e tratamento de cor.')">
+            <div class="icon">📸</div>
+            <h3>Edição de Fotos</h3>
+            <p>Tratamento de imagem profissional para redes sociais e marcas.</p>
+        </div>
 
-    <script src="main.js"></script>
+        <div class="card" onclick="alert('Edição de Vídeos: Cortes, efeitos e legendagem para Reels/YouTube.')">
+            <div class="icon">🎬</div>
+            <h3>Edição de Vídeos</h3>
+            <p>Criação de conteúdo dinâmico para YouTube, Instagram e TikTok.</p>
+        </div>
+    </div>
+
+    <a href="https://wa.me/teunumeroaqui" class="btn-contato">Solicitar Orçamento via WhatsApp</a>
+
 </body>
 </html>
