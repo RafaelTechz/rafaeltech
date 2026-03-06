@@ -1,104 +1,185 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ketty Designer | Produtos Personalizados</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Custom Print Store | Produtos Personalizados</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* CORREÇÃO PARA MOBILE */
+
+@media (max-width:768px){
+
+.cart-sidebar{
+width:100%;
+right:-100%;
+}
+
+.cart-sidebar.active{
+right:0;
+}
+
+.cart-footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#fff;
+padding:15px;
+box-shadow:0 -3px 10px rgba(0,0,0,0.1);
+}
+
+.btn-whatsapp{
+width:100%;
+font-size:16px;
+padding:14px;
+}
+
+}
+
+</style>
+
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">Ketty<span>Designer</span>.</a>
-            
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Buscar produtos...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
+<header class="navbar">
+<div class="container nav-container">
 
-            <div class="nav-icons">
-                <div class="cart-icon" onclick="toggleCart()">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span id="cart-count">0</span>
-                </div>
-            </div>
-        </div>
-    </header>
+<a href="#" class="logo">Custom<span>Print</span>.</a>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Transforme ideias em realidade.</h1>
-            <p>Personalizados exclusivos para sua empresa, eventos e presentes.</p>
-            <a href="#produtos" class="btn-primary">Ver Catálogo</a>
-        </div>
-    </section>
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="Buscar produtos...">
+<button><i class="fas fa-search"></i></button>
+</div>
 
-    <main class="container" id="produtos">
-        
-        <div class="category-filter">
-            <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
-            <button class="filter-btn" onclick="filterProducts('papelaria')">Papelaria</button>
-            <button class="filter-btn" onclick="filterProducts('personalizados')">Personalizados</button>
-            <button class="filter-btn" onclick="filterProducts('eventos')">Eventos</button>
-        </div>
+<div class="nav-icons">
+<div class="cart-icon" onclick="toggleCart()">
+<i class="fas fa-shopping-bag"></i>
+<span id="cart-count">0</span>
+</div>
+</div>
 
-        <div id="product-grid" class="product-grid">
-            </div>
-    </main>
+</div>
+</header>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Ketty Designer. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+<section class="hero">
+<div class="container hero-content">
 
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img id="modal-img" src="" alt="Produto">
-                </div>
-                <div class="modal-info">
-                    <h2 id="modal-title">Nome do Produto</h2>
-                    <p id="modal-price" class="price">R$ 0,00</p>
-                    <p id="modal-desc">Descrição do produto.</p>
-                    
-                    <div id="modal-variations" class="variations-container">
-                        </div>
+<h1>Transforme ideias em realidade.</h1>
+<p>Personalizados exclusivos para sua empresa, eventos e presentes.</p>
 
-                    <div class="modal-actions">
-                        <button class="btn-primary" onclick="addToCartFromModal()">Adicionar ao Carrinho</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<a href="#produtos" class="btn-primary">Ver Catálogo</a>
 
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>Seu Carrinho</h3>
-            <span class="close-cart" onclick="toggleCart()">&times;</span>
-        </div>
-        <div id="cart-items" class="cart-items">
-            </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total Estimado:</span>
-                <span id="cart-total-price">R$ 0,00</span>
-            </div>
-            <button class="btn-whatsapp" onclick="checkoutWhatsApp()">
-                <i class="fab fa-whatsapp"></i> Finalizar no WhatsApp
-            </button>
-        </div>
-    </div>
-    <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+</div>
+</section>
 
-    <script src="js/script.js"></script>
+<main class="container" id="produtos">
+
+<div class="category-filter">
+
+<button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+
+<button class="filter-btn" onclick="filterProducts('papelaria')">Papelaria</button>
+
+<button class="filter-btn" onclick="filterProducts('personalizados')">Personalizados</button>
+
+<button class="filter-btn" onclick="filterProducts('eventos')">Eventos</button>
+
+</div>
+
+<div id="product-grid" class="product-grid"></div>
+
+</main>
+
+<footer>
+<div class="container">
+<p>© 2024 Custom Print Store. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<div id="product-modal" class="modal">
+
+<div class="modal-content">
+
+<span class="close-modal" onclick="closeModal()">×</span>
+
+<div class="modal-body">
+
+<div class="modal-image">
+<img id="modal-img" src="" alt="Produto">
+</div>
+
+<div class="modal-info">
+
+<h2 id="modal-title">Nome do Produto</h2>
+
+<p id="modal-price" class="price">R$ 0,00</p>
+
+<p id="modal-desc">Descrição do produto.</p>
+
+<div id="modal-variations" class="variations-container"></div>
+
+<div class="modal-actions">
+
+<button class="btn-primary" onclick="addToCartFromModal()">
+Adicionar ao Carrinho
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="cart-sidebar" class="cart-sidebar">
+
+<div class="cart-header">
+
+<h3>Seu Carrinho</h3>
+
+<span class="close-cart" onclick="toggleCart()">×</span>
+
+</div>
+
+<div id="cart-items" class="cart-items"></div>
+
+<div class="cart-footer">
+
+<div class="cart-total">
+
+<span>Total Estimado:</span>
+
+<span id="cart-total-price">R$ 0,00</span>
+
+</div>
+
+<button class="btn-whatsapp" onclick="checkoutWhatsApp()">
+
+<i class="fab fa-whatsapp"></i>
+
+Finalizar no WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+<div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+<script src="js/script.js"></script>
+
 </body>
-
 </html>
-
