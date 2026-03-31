@@ -1,186 +1,111 @@
 <!DOCTYPE html>
-
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Downloads</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #121212;
+            margin: 0;
+            padding: 20px;
+            gap: 20px;
+        }
 
-<title>Ketty Designer | Produtos Personalizados</title>
+        .game-card {
+            background: #1e1e1e;
+            border-radius: 15px;
+            padding: 25px;
+            width: 100%;
+            max-width: 450px; 
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        .game-card:hover {
+            border-color: #0072ff;
+        }
 
-<link rel="stylesheet" href="css/style.css">
+        .game-title {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
 
-<style>
+        .button-group {
+            display: flex;
+            gap: 10px; /* espaço entre os botões */
+        }
 
-/* CORREÇÃO PARA MOBILE */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            flex: 1;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+        }
 
-@media (max-width:768px){
+        .btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.2);
+            box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+        }
 
-.cart-sidebar{
-width:100%;
-right:-100%;
-}
+        .btn.secundario {
+            background: linear-gradient(135deg, #444 0%, #222 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
 
-.cart-sidebar.active{
-right:0;
-}
-
-.cart-footer{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#fff;
-padding:15px;
-box-shadow:0 -3px 10px rgba(0,0,0,0.1);
-}
-
-.btn-whatsapp{
-width:100%;
-font-size:16px;
-padding:14px;
-}
-
-}
-
-</style>
-
+        .info-text {
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<header class="navbar">
-<div class="container nav-container">
-
-<a href="#" class="logo">Ketty<span>Designer</span>.</a>
-
-<div class="search-bar">
-<input type="text" id="searchInput" placeholder="Buscar produtos...">
-<button><i class="fas fa-search"></i></button>
-</div>
-
-<div class="nav-icons">
-<div class="cart-icon" onclick="toggleCart()">
-<i class="fas fa-shopping-bag"></i>
-<span id="cart-count">0</span>
-</div>
-</div>
-
-</div>
-</header>
-
-<section class="hero">
-<div class="container hero-content">
-
-<h1>Transforme ideias em realidade.</h1>
-<p>Personalizados exclusivos para sua empresa, eventos e presentes.</p>
-
-<a href="#produtos" class="btn-primary">Ver Catálogo</a>
-
-</div>
-</section>
-
-<main class="container" id="produtos">
-
-<div class="category-filter">
-
-<button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
-
-<button class="filter-btn" onclick="filterProducts('papelaria')">Papelaria</button>
-
-<button class="filter-btn" onclick="filterProducts('personalizados')">Personalizados</button>
-
-<button class="filter-btn" onclick="filterProducts('eventos')">Eventos</button>
-
-</div>
-
-<div id="product-grid" class="product-grid"></div>
-
-</main>
-
-<footer>
-<div class="container">
-<p>© 2026 Ketty Designer. Todos os direitos reservados.</p>
-</div>
-</footer>
-
-<div id="product-modal" class="modal">
-
-<div class="modal-content">
-
-<span class="close-modal" onclick="closeModal()">×</span>
-
-<div class="modal-body">
-
-<div class="modal-image">
-<img id="modal-img" src="" alt="Produto">
-</div>
-
-<div class="modal-info">
-
-<h2 id="modal-title">Nome do Produto</h2>
-
-<p id="modal-price" class="price">R$ 0,00</p>
-
-<p id="modal-desc">Descrição do produto.</p>
-
-<div id="modal-variations" class="variations-container"></div>
-
-<div class="modal-actions">
-
-<button class="btn-primary" onclick="addToCartFromModal()">
-Adicionar ao Carrinho
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="cart-sidebar" class="cart-sidebar">
-
-<div class="cart-header">
-
-<h3>Seu Carrinho</h3>
-
-<span class="close-cart" onclick="toggleCart()">×</span>
-
-</div>
-
-<div id="cart-items" class="cart-items"></div>
-
-<div class="cart-footer">
-
-<div class="cart-total">
-
-<span>Total Estimado:</span>
-
-<span id="cart-total-price">R$ 0,00</span>
-
-</div>
-
-<button class="btn-whatsapp" onclick="checkoutWhatsApp()">
-
-<i class="fab fa-whatsapp"></i>
-
-Finalizar no WhatsApp
-
-</button>
-
-</div>
-
-</div>
-
-<div id="overlay" class="overlay" onclick="toggleCart()"></div>
-
-<script src="js/script.js"></script>
+    <!-- Euro Truck -->
+    <div class="game-card">
+        <div class="game-title">🚚 Euro Truck Simulator 2</div>
+        <div class="button-group">
+            <a href="https://modsfire.com/vSi1K19h83eIsQI" target="_blank" class="btn">
+                📥 DOWNLOAD
+            </a>
+            <a href="https://youtu.be/01Rh415GOeY" target="_blank" class="btn secundario">
+                📺 Tutorial de Instalação
+            </a>
+        </div>
+        <div class="info-text">Versão 1.0 | Servidor Global</div>
+    </div>
+ <!-- GTA 5 -->
+    <div class="game-card">
+        <div class="game-title">🚓 GTA 5</div>
+        <div class="button-group">
+            <a href="https://zpaste.net/p/e0wfs" target="_blank" class="btn">
+                📥 DOWNLOAD
+            </a>
+        </div>
+        <div class="info-text">Download direto pelo mediafire dividido em partes</div>
+    </div>
 
 </body>
 </html>
-
